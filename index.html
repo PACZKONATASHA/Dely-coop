@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Dely-Coop</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="phone">
+
+  <!-- ══════════════════════════════
+       SCREEN 1 – LANDING
+       ══════════════════════════════ -->
+  <div class="screen active" id="s-landing">
+    <div class="status-bar dark" style="background:transparent; position:absolute; top:0; left:0; right:0; z-index:2;">
+      <span>9:41</span><span>▲▲▲ 🔋</span>
+    </div>
+    <div style="display:contents;">
+      <div style="flex:1; background:linear-gradient(160deg,#1B5E20 0%,#2E7D32 45%,#43A047 100%); display:flex; flex-direction:column;">
+        <div class="landing-body" style="padding-top:80px;">
+          <div class="landing-logo-ring">
+            <div class="landing-logo-inner">🛵</div>
+          </div>
+          <div class="landing-title">Dely - Coop</div>
+          <div class="landing-sub">Delivery cooperativo<br>Hecho por y para nuestra comunidad</div>
+        </div>
+        <div class="landing-wave">
+          <button class="btn btn-primary" onclick="goTo('s-login')" style="margin-bottom:12px;">Ingresar</button>
+          <button class="btn btn-outline" onclick="goTo('s-register')">Registrarse</button>
+          <p class="landing-tagline">🤝 Cooperar es entregar más</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       SCREEN 2 – LOGIN
+       ══════════════════════════════ -->
+  <div class="screen" id="s-login">
+    <div class="auth-header">
+      <div class="status-bar dark" style="width:100%; margin-bottom:0; padding:0;">
+        <span>9:41</span><span>▲▲▲ 🔋</span>
+      </div>
+      <div class="auth-logo">🛵</div>
+      <div class="auth-name">Dely - Coop</div>
+    </div>
+    <div class="auth-body">
+      <div class="auth-h1">Ingresar</div>
+      <div class="auth-sub">Accedé a tu cuenta para continuar</div>
+
+      <div class="auth-role-label">¿Cómo vas a ingresar?</div>
+      <div class="role-row" style="margin-bottom:22px;">
+        <button class="role-btn active" id="r-commerce" onclick="selectRole('commerce')">🏪 Comercio</button>
+        <button class="role-btn"        id="r-courier"  onclick="selectRole('courier')">🛵 Repartidor</button>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Correo electrónico</label>
+        <input type="email" class="form-input" placeholder="ejemplo@comercio.com" value="panaderia@sol.com">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Contraseña</label>
+        <input type="password" class="form-input" placeholder="••••••••" value="123456">
+      </div>
+      <div class="forgot">¿Olvidaste tu contraseña?</div>
+
+      <button class="btn btn-primary" onclick="doLogin()">Ingresar</button>
+      <div class="auth-footer">¿No tenés cuenta? <a onclick="goTo('s-register')">Registrate</a></div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       SCREEN 3 – REGISTER
+       ══════════════════════════════ -->
+  <div class="screen" id="s-register">
+    <div class="auth-header">
+      <div class="status-bar dark" style="width:100%; margin-bottom:0; padding:0;">
+        <span>9:41</span><span>▲▲▲ 🔋</span>
+      </div>
+      <div class="auth-logo">🛵</div>
+      <div class="auth-name">Dely - Coop</div>
+    </div>
+    <div class="auth-body">
+      <div class="auth-h1">Registrarse</div>
+      <div class="auth-sub">Creá tu cuenta para comenzar</div>
+
+      <div class="role-row" style="margin-bottom:22px;">
+        <button class="role-btn active">🏪 Comercio</button>
+        <button class="role-btn">🛵 Repartidor</button>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Nombre del comercio / Nombre completo</label>
+        <input type="text" class="form-input" placeholder="Ej: Panadería Sol">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Correo electrónico</label>
+        <input type="email" class="form-input" placeholder="ejemplo@comercio.com">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Teléfono</label>
+        <input type="tel" class="form-input" placeholder="+54 376 123-4567">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Contraseña</label>
+        <input type="password" class="form-input" placeholder="Mínimo 6 caracteres">
+      </div>
+
+      <button class="btn btn-primary" style="margin-top:6px;">Crear cuenta</button>
+      <div class="auth-footer">¿Ya tenés cuenta? <a onclick="goTo('s-login')">Ingresá</a></div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       SCREEN 4 – COMMERCE HOME
+       ══════════════════════════════ -->
+  <div class="screen" id="s-commerce-home">
+    <div class="top-bar">
+      <div class="status-bar dark" style="padding:0; margin-bottom:6px;"><span>9:41</span><span>▲▲▲ 🔋</span></div>
+      <div class="greeting">Hola, Panadería Sol 👋</div>
+      <div class="greeting-sub">Comercio asociado</div>
+    </div>
+
+    <div class="scroll-content pb-20" style="background:var(--gray-bg);">
+      <div class="new-delivery-card">
+        <div>
+          <div class="nd-text">Nuevo envío</div>
+          <div class="nd-sub">Solicitá un repartidor para entregar un pedido</div>
+        </div>
+        <button class="nd-btn" onclick="goTo('s-request')">Solicitar<br>envío</button>
+      </div>
+
+      <div class="section-header mt-14">
+        <span class="section-title">Mis envíos</span>
+        <span class="see-all" onclick="goTo('s-orders')">Ver todos</span>
+      </div>
+
+      <div class="order-card" onclick="goTo('s-tracking')">
+        <div class="status-dot dot-transit"></div>
+        <div class="order-info"><div class="order-num">Pedido #1025</div><div class="order-sub">En camino</div></div>
+        <div class="order-meta"><div class="order-time">Hoy, 10:30</div><div class="order-cost">$450</div></div>
+      </div>
+
+      <div class="order-card" onclick="goTo('s-tracking')">
+        <div class="status-dot dot-delivered"></div>
+        <div class="order-info"><div class="order-num">Pedido #1024</div><div class="order-sub">Entregado</div></div>
+        <div class="order-meta"><div class="order-time">Hoy, 10:00</div><div class="order-cost">$450</div></div>
+      </div>
+
+      <div class="order-card">
+        <div class="status-dot dot-cancelled"></div>
+        <div class="order-info"><div class="order-num">Pedido #1023</div><div class="order-sub">Cancelado</div></div>
+        <div class="order-meta"><div class="order-time">Ayer, 16:30</div><div class="order-cost red">$450</div></div>
+      </div>
+    </div>
+
+    <div class="nav-bar">
+      <div class="nav-item active" onclick="goTo('s-commerce-home')"><span class="nav-icon">🏠</span><span>Inicio</span></div>
+      <div class="nav-item" onclick="goTo('s-orders')"><span class="nav-icon">📦</span><span>Envíos</span></div>
+      <div class="nav-item"><span class="nav-icon">🏪</span><span>Comercios</span></div>
+      <div class="nav-item" onclick="goTo('s-cooperative')"><span class="nav-icon">👤</span><span>Perfil</span></div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       SCREEN 5 – REQUEST DELIVERY
+       ══════════════════════════════ -->
+  <div class="screen" id="s-request" style="background:#fff;">
+    <div class="status-bar light"><span>9:41</span><span>▲▲▲ 🔋</span></div>
+    <div class="screen-header">
+      <span class="back-btn" onclick="goTo('s-commerce-home')">←</span>
+      <span class="screen-title">Solicitar envío</span>
+    </div>
+
+    <div class="scroll-content" style="padding:20px 20px 0;">
+      <div class="form-section-label">Datos del pedido</div>
+
+      <div class="form-group">
+        <label class="form-label">Dirección de entrega</label>
+        <input type="text" class="form-input" placeholder="Calle, número, ciudad" value="Calle Falsa 123, Itu">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Referencia (opcional)</label>
+        <input type="text" class="form-input" placeholder="Ej: Casa azul, portón negro" value="Casa azul, portón negro">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Peso / Tamaño</label>
+        <div class="form-select-wrap">
+          <select class="form-select">
+            <option>Pequeño (menos de 1 kg)</option>
+            <option selected>Mediano (1–5 kg)</option>
+            <option>Grande (5–15 kg)</option>
+            <option>Muy grande (más de 15 kg)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Observaciones (opcional)</label>
+        <input type="text" class="form-input" placeholder="Ej: Tocar timbre" value="Tocar timbre">
+      </div>
+
+      <div class="summary-card">
+        <div style="font-size:14px; font-weight:700; margin-bottom:10px;">Resumen</div>
+        <div class="summary-row"><span class="s-label">Distancia estimada</span><span class="s-value">2.4 km</span></div>
+        <div class="summary-row total"><span class="s-label">Costo del envío</span><span class="s-price" style="font-size:20px;">$450</span></div>
+      </div>
+      <div style="height:24px;"></div>
+    </div>
+
+    <div style="padding:16px 20px; border-top:1px solid var(--border); background:#fff;">
+      <button class="btn btn-primary" id="btn-request-delivery">Solicitar repartidor</button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       SCREEN 6 – ORDER CONFIRMED
+       ══════════════════════════════ -->
+  <div class="screen" id="s-confirmed" style="background:#fff; align-items:center; justify-content:center;">
+    <div class="status-bar light" style="position:absolute; top:0; left:0; right:0;"><span>9:41</span><span>▲▲▲ 🔋</span></div>
+    <div class="confirmed-body" style="padding-top:60px;">
+      <div class="confirmed-icon">✅</div>
+      <div class="confirmed-title">Tu pedido fue recibido</div>
+      <div class="confirmed-sub">Buscando el repartidor socio<br>más cercano...</div>
+      <div class="order-badge">Pedido #1026</div>
+      <div class="time-est">⏱ Tiempo estimado de asignación: <strong>1 – 3 minutos</strong></div>
+      <button class="btn btn-primary" style="width:220px;" id="btn-ver-estado">Ver estado del pedido</button>
+      <button class="btn-text" onclick="goToHome()">Volver al inicio</button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       SCREEN 7 – TRACKING
+       ══════════════════════════════ -->
+  <div class="screen" id="s-tracking" style="background:#fff;">
+    <div class="status-bar light"><span>9:41</span><span>▲▲▲ 🔋</span></div>
+    <div class="tracking-header">
+      <span class="back-btn" onclick="goBack()">←</span>
+      <span class="screen-title">Seguimiento del pedido</span>
+      <span class="chip chip-orange">En camino</span>
+    </div>
+
+    <div class="scroll-content">
+      <div style="padding:12px 20px 4px; font-size:14px; color:var(--gray); font-weight:600;">Pedido #1026</div>
+
+      <div style="padding:4px 20px; font-size:11px; font-weight:700; color:var(--gray-light); text-transform:uppercase; letter-spacing:0.7px; margin-top:8px;">Repartidor asignado</div>
+      <div class="courier-row">
+        <div class="courier-avatar">ML</div>
+        <div>
+          <div class="courier-name">Martín López</div>
+          <div class="courier-rating">⭐ 4.9</div>
+        </div>
+        <div class="call-btn">📞</div>
+      </div>
+
+      <div style="padding:16px 20px 8px; font-size:11px; font-weight:700; color:var(--gray-light); text-transform:uppercase; letter-spacing:0.7px;">Estado del envío</div>
+
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-dot tl-done">✓</div>
+          <div><div class="tl-event">Pedido recibido</div><div class="tl-time">10:22</div></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot tl-done">✓</div>
+          <div><div class="tl-event">Repartidor asignado</div><div class="tl-time">10:23</div></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot tl-current">●</div>
+          <div><div class="tl-event">En camino a tu comercio</div><div class="tl-time">10:25</div></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot tl-pending">○</div>
+          <div><div class="tl-event pending">Pedido retirado</div><div class="tl-time">—</div></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot tl-pending">○</div>
+          <div><div class="tl-event pending">Entregado al cliente</div><div class="tl-time">—</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding:16px 20px; border-top:1px solid var(--border);">
+      <button class="btn btn-ghost" style="font-size:15px; font-weight:700;">📞 Contactar al repartidor</button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       SCREEN 8 – MY ORDERS
+       ══════════════════════════════ -->
+  <div class="screen" id="s-orders" style="background:var(--gray-bg);">
+    <div class="status-bar light"><span>9:41</span><span>▲▲▲ 🔋</span></div>
+    <div class="screen-header">
+      <span class="back-btn" onclick="goTo('s-commerce-home')">←</span>
+      <span class="screen-title">Mis envíos</span>
+    </div>
+    <div class="tab-bar" id="orders-tabs">
+      <div class="tab-item active" onclick="filterOrders('all',this)">Todos</div>
+      <div class="tab-item"        onclick="filterOrders('transit',this)">En camino</div>
+      <div class="tab-item"        onclick="filterOrders('delivered',this)">Entregados</div>
+      <div class="tab-item"        onclick="filterOrders('cancelled',this)">Cancelados</div>
+    </div>
+
+    <div class="scroll-content pb-20" style="padding-top:10px;" id="orders-list">
+      <div class="order-card" data-status="transit" onclick="goTo('s-tracking')">
+        <div class="status-dot dot-transit"></div>
+        <div class="order-info"><div class="order-num">Pedido #1026</div><div class="order-sub">En camino</div></div>
+        <div class="order-meta"><div class="order-time">Hoy, 10:42</div><div class="order-cost">$450</div></div>
+      </div>
+      <div class="order-card" data-status="transit" onclick="goTo('s-tracking')">
+        <div class="status-dot dot-transit"></div>
+        <div class="order-info"><div class="order-num">Pedido #1025</div><div class="order-sub">En camino</div></div>
+        <div class="order-meta"><div class="order-time">Hoy, 10:30</div><div class="order-cost">$450</div></div>
+      </div>
+      <div class="order-card" data-status="delivered">
+        <div class="status-dot dot-delivered"></div>
+        <div class="order-info"><div class="order-num">Pedido #1024</div><div class="order-sub">Entregado</div></div>
+        <div class="order-meta"><div class="order-time">Hoy, 10:00</div><div class="order-cost">$450</div></div>
+      </div>
+      <div class="order-card" data-status="cancelled">
+        <div class="status-dot dot-cancelled"></div>
+        <div class="order-info"><div class="order-num">Pedido #1023</div><div class="order-sub">Cancelado</div></div>
+        <div class="order-meta"><div class="order-time">Ayer, 16:30</div><div class="order-cost red">$450</div></div>
+      </div>
+      <div class="order-card" data-status="delivered">
+        <div class="status-dot dot-delivered"></div>
+        <div class="order-info"><div class="order-num">Pedido #1022</div><div class="order-sub">Entregado</div></div>
+        <div class="order-meta"><div class="order-time">Ayer, 11:40</div><div class="order-cost">$450</div></div>
+      </div>
+      <div class="order-card" data-status="delivered">
+        <div class="status-dot dot-delivered"></div>
+        <div class="order-info"><div class="order-num">Pedido #1021</div><div class="order-sub">Entregado</div></div>
+        <div class="order-meta"><div class="order-time">Ayer, 09:15</div><div class="order-cost">$450</div></div>
+      </div>
+    </div>
+
+    <div class="nav-bar">
+      <div class="nav-item" onclick="goTo('s-commerce-home')"><span class="nav-icon">🏠</span><span>Inicio</span></div>
+      <div class="nav-item active"><span class="nav-icon">📦</span><span>Envíos</span></div>
+      <div class="nav-item"><span class="nav-icon">🏪</span><span>Comercios</span></div>
+      <div class="nav-item" onclick="goTo('s-cooperative')"><span class="nav-icon">👤</span><span>Perfil</span></div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       SCREEN 9 – COURIER HOME
+       ══════════════════════════════ -->
+  <div class="screen" id="s-courier-home" style="background:var(--gray-bg);">
+    <div class="courier-top">
+      <div class="status-bar dark" style="padding:0; margin-bottom:6px;"><span>9:41</span><span>▲▲▲ 🔋</span></div>
+      <div class="courier-top-row">
+        <div>
+          <div class="greeting">Hola, Martín 👋</div>
+          <div class="greeting-sub" style="color:rgba(255,255,255,0.8);">Socio repartidor</div>
+        </div>
+        <div class="toggle-wrap">
+          <div class="toggle on" id="avail-toggle" onclick="toggleAvailability()"></div>
+          <span class="toggle-label" id="avail-label">Disponible</span>
+        </div>
+      </div>
+      <div class="balance-section">
+        <div class="balance-lbl">Tu balance</div>
+        <div class="balance-amt">$12.450</div>
+        <span class="balance-link">Ver detalle ›</span>
+      </div>
+    </div>
+
+    <div class="scroll-content pb-20">
+      <div class="stats-row">
+        <div class="stat-card"><div class="stat-val">5</div><div class="stat-label">Hoy<br>entregas</div></div>
+        <div class="stat-card"><div class="stat-val">28</div><div class="stat-label">Esta semana<br>entregas</div></div>
+        <div class="stat-card"><div class="stat-val">4.9⭐</div><div class="stat-label">Calificación<br>promedio</div></div>
+      </div>
+
+      <div class="section-header">
+        <span class="section-title">Nuevo pedido disponible</span>
+      </div>
+
+      <div class="new-order-card">
+        <div class="new-order-badge">📍 Cerca de vos</div>
+        <div class="new-order-name">Panadería Sol</div>
+        <div class="new-order-addr">Calle Belgrano 459</div>
+        <div class="new-order-pills">
+          <span class="pill">📏 2.1 km</span>
+          <span class="pill">💰 $450</span>
+        </div>
+        <button class="btn-accept" onclick="goTo('s-active-delivery')">Aceptar pedido</button>
+      </div>
+
+      <div class="section-header mt-14">
+        <span class="section-title">Mis entregas recientes</span>
+      </div>
+      <div class="order-card">
+        <div class="status-dot dot-delivered"></div>
+        <div class="order-info"><div class="order-num">Pedido #1025</div><div class="order-sub">Entregado</div></div>
+        <div class="order-meta"><div class="order-time">Hoy, 10:30</div><div class="order-cost">$450</div></div>
+      </div>
+      <div class="order-card">
+        <div class="status-dot dot-delivered"></div>
+        <div class="order-info"><div class="order-num">Pedido #1024</div><div class="order-sub">Entregado</div></div>
+        <div class="order-meta"><div class="order-time">Hoy, 09:15</div><div class="order-cost">$450</div></div>
+      </div>
+    </div>
+
+    <div class="nav-bar">
+      <div class="nav-item active"><span class="nav-icon">🏠</span><span>Inicio</span></div>
+      <div class="nav-item"><span class="nav-icon">📋</span><span>Mis entregas</span></div>
+      <div class="nav-item"><span class="nav-icon">🗺️</span><span>Mapa</span></div>
+      <div class="nav-item" onclick="goTo('s-cooperative')"><span class="nav-icon">👤</span><span>Perfil</span></div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       SCREEN 10 – ACTIVE DELIVERY
+       ══════════════════════════════ -->
+  <div class="screen" id="s-active-delivery" style="background:var(--gray-bg);">
+    <div class="delivery-header">
+      <div class="status-bar dark" style="position:absolute; top:0; left:0; right:0; padding:0 20px;"><span>9:41</span><span>▲▲▲ 🔋</span></div>
+      <span style="font-size:22px; cursor:pointer; margin-top:44px;" onclick="goTo('s-courier-home')">←</span>
+      <span class="delivery-header-title" style="margin-top:44px;">Entrega activa</span>
+    </div>
+
+    <div class="scroll-content pb-20">
+      <div class="delivery-step-card ds-pickup">
+        <div class="ds-header">
+          <div class="ds-step-icon pickup">📍</div>
+          <div><div class="ds-label">Retirá el pedido en</div></div>
+          <button class="map-btn-sm">Ver mapa</button>
+        </div>
+        <div class="ds-name">Panadería Sol</div>
+        <div class="ds-addr">Calle Belgrano 456</div>
+      </div>
+
+      <div class="delivery-step-card ds-dropoff mt-8">
+        <div class="ds-header">
+          <div class="ds-step-icon dropoff">📦</div>
+          <div><div class="ds-label">Entregá en</div></div>
+          <button class="map-btn-sm">Ver mapa</button>
+        </div>
+        <div class="ds-name">Calle Falsa 123, Itu</div>
+      </div>
+
+      <div class="delivery-step-card" style="background:#fff; border:1.5px solid var(--border); margin-top:8px;">
+        <div style="font-size:11px; font-weight:700; color:var(--gray-light); text-transform:uppercase; letter-spacing:0.7px; margin-bottom:12px;">Detalles del pedido</div>
+        <div class="detail-row"><span class="detail-icon">🏷️</span><span>Pedido #1026</span></div>
+        <div class="detail-row"><span class="detail-icon">📏</span><span>Mediano</span></div>
+        <div class="detail-row"><span class="detail-icon">🔔</span><span>Tocar timbre</span></div>
+      </div>
+    </div>
+
+    <div style="padding:16px 20px; border-top:1px solid var(--border); background:#fff;">
+      <button class="btn btn-primary" id="delivery-action-btn" onclick="advanceDelivery()">Confirmar retiro</button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       SCREEN 11 – COOPERATIVE
+       ══════════════════════════════ -->
+  <div class="screen" id="s-cooperative" style="background:#fff;">
+    <div class="coop-header">
+      <div class="status-bar dark" style="width:100%; padding:0; margin-bottom:0;"><span>9:41</span><span>▲▲▲ 🔋</span></div>
+      <div class="coop-logo">🛵</div>
+      <div class="coop-name">Dely - Coop</div>
+      <div class="coop-sub">Cooperativa de trabajo</div>
+    </div>
+
+    <div class="scroll-content">
+      <div class="menu-list">
+        <div class="menu-item">
+          <div class="menu-icon-box ic-blue">📰</div>
+          <div class="menu-text">
+            <div class="menu-title">Noticias</div>
+            <div class="menu-desc">Enterate de las novedades</div>
+          </div>
+          <div class="menu-badge">3</div>
+          <div class="menu-arrow">›</div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-icon-box ic-purple">🗳️</div>
+          <div class="menu-text">
+            <div class="menu-title">Asambleas</div>
+            <div class="menu-desc">Participá en las decisiones</div>
+          </div>
+          <div class="menu-badge">2</div>
+          <div class="menu-arrow">›</div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-icon-box ic-green">📊</div>
+          <div class="menu-text">
+            <div class="menu-title">Estadísticas</div>
+            <div class="menu-desc">Transparencia y datos</div>
+          </div>
+          <div class="menu-arrow">›</div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-icon-box ic-orange">📁</div>
+          <div class="menu-text">
+            <div class="menu-title">Documentos</div>
+            <div class="menu-desc">Reglamento y archivos</div>
+          </div>
+          <div class="menu-arrow">›</div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-icon-box ic-pink">💬</div>
+          <div class="menu-text">
+            <div class="menu-title">Contacto</div>
+            <div class="menu-desc">Comunicáte con la cooperativa</div>
+          </div>
+          <div class="menu-arrow">›</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-bar">
+      <div class="nav-item" onclick="goToHome()"><span class="nav-icon">🏠</span><span>Inicio</span></div>
+      <div class="nav-item"><span class="nav-icon">🗳️</span><span>Votaciones</span></div>
+      <div class="nav-item active"><span class="nav-icon">🤝</span><span>Cooperativa</span></div>
+      <div class="nav-item"><span class="nav-icon">👤</span><span>Perfil</span></div>
+    </div>
+  </div>
+
+</div><!-- /.phone -->
+
+<script src="script.js"></script>
+</body>
+</html>
