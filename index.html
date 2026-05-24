@@ -419,7 +419,7 @@
       </div>
 
       <!-- Recent deliveries -->
-      <div class="section-header mt-14">
+      <div class="section-header mt-14" id="recent-deliveries-header">
         <span class="section-title">Mis entregas recientes</span>
       </div>
       <div class="order-card">
@@ -436,9 +436,9 @@
     </div>
 
     <div class="nav-bar">
-      <div class="nav-item active"><span class="material-icons-outlined nav-icon">home</span><span>Inicio</span></div>
-      <div class="nav-item"><span class="material-icons-outlined nav-icon">receipt_long</span><span>Mis entregas</span></div>
-      <div class="nav-item"><span class="material-icons-outlined nav-icon">map</span><span>Mapa</span></div>
+      <div class="nav-item active" onclick="goTo('s-courier-home')"><span class="material-icons-outlined nav-icon">home</span><span>Inicio</span></div>
+      <div class="nav-item" onclick="goTo('s-courier-deliveries')"><span class="material-icons-outlined nav-icon">receipt_long</span><span>Mis entregas</span></div>
+      <div class="nav-item" onclick="goTo('s-map')"><span class="material-icons-outlined nav-icon">map</span><span>Mapa</span></div>
       <div class="nav-item" onclick="openCooperative()"><span class="material-icons-outlined nav-icon">person</span><span>Perfil</span></div>
     </div>
   </div>
@@ -496,7 +496,87 @@
   </div>
 
   <!-- ══════════════════════════════
-       SCREEN 11 – COOPERATIVE
+       SCREEN 11 – COURIER DELIVERIES
+       ══════════════════════════════ -->
+  <div class="screen" id="s-courier-deliveries" style="background:var(--gray-bg);">
+    <div class="status-bar light"><span>9:41</span><span>▲▲▲ 🔋</span></div>
+    <div class="screen-header">
+      <span class="back-btn" onclick="goTo('s-courier-home')">←</span>
+      <span class="screen-title">Mis entregas</span>
+    </div>
+    <div class="tab-bar">
+      <div class="tab-item active">Todas</div>
+      <div class="tab-item">En curso</div>
+      <div class="tab-item">Entregadas</div>
+    </div>
+    <div class="scroll-content pb-20" style="padding-top:10px;">
+      <div class="order-card">
+        <div class="status-dot dot-transit"></div>
+        <div class="order-info"><div class="order-num">Pedido #1026</div><div class="order-sub">En camino</div></div>
+        <div class="order-meta"><div class="order-time">Hoy, 11:05</div><div class="order-cost">$450</div></div>
+      </div>
+      <div class="order-card">
+        <div class="status-dot dot-delivered"></div>
+        <div class="order-info"><div class="order-num">Pedido #1025</div><div class="order-sub">Entregado</div></div>
+        <div class="order-meta"><div class="order-time">Hoy, 10:30</div><div class="order-cost">$450</div></div>
+      </div>
+      <div class="order-card">
+        <div class="status-dot dot-delivered"></div>
+        <div class="order-info"><div class="order-num">Pedido #1024</div><div class="order-sub">Entregado</div></div>
+        <div class="order-meta"><div class="order-time">Hoy, 09:15</div><div class="order-cost">$450</div></div>
+      </div>
+      <div class="order-card">
+        <div class="status-dot dot-delivered"></div>
+        <div class="order-info"><div class="order-num">Pedido #1023</div><div class="order-sub">Entregado</div></div>
+        <div class="order-meta"><div class="order-time">Ayer, 18:40</div><div class="order-cost">$450</div></div>
+      </div>
+      <div class="order-card">
+        <div class="status-dot dot-cancelled"></div>
+        <div class="order-info"><div class="order-num">Pedido #1022</div><div class="order-sub">Cancelado</div></div>
+        <div class="order-meta"><div class="order-time">Ayer, 16:30</div><div class="order-cost red">$450</div></div>
+      </div>
+      <div class="order-card">
+        <div class="status-dot dot-delivered"></div>
+        <div class="order-info"><div class="order-num">Pedido #1021</div><div class="order-sub">Entregado</div></div>
+        <div class="order-meta"><div class="order-time">Ayer, 14:00</div><div class="order-cost">$450</div></div>
+      </div>
+    </div>
+    <div class="nav-bar">
+      <div class="nav-item" onclick="goTo('s-courier-home')"><span class="material-icons-outlined nav-icon">home</span><span>Inicio</span></div>
+      <div class="nav-item active"><span class="material-icons-outlined nav-icon">receipt_long</span><span>Mis entregas</span></div>
+      <div class="nav-item" onclick="goTo('s-map')"><span class="material-icons-outlined nav-icon">map</span><span>Mapa</span></div>
+      <div class="nav-item" onclick="openCooperative()"><span class="material-icons-outlined nav-icon">person</span><span>Perfil</span></div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       SCREEN 12 – MAP
+       ══════════════════════════════ -->
+  <div class="screen" id="s-map" style="background:#fff;">
+    <div class="status-bar light"><span>9:41</span><span>▲▲▲ 🔋</span></div>
+    <div class="screen-header" style="border-bottom:1px solid var(--border);">
+      <span class="back-btn" onclick="goTo('s-courier-home')">←</span>
+      <span class="screen-title">Mapa</span>
+    </div>
+    <div style="flex:1; overflow:hidden;">
+      <iframe
+        src="https://maps.google.com/maps?q=Ituizango,Corrientes,Argentina&output=embed&z=14&t=m"
+        width="100%" height="100%"
+        style="border:0; display:block;"
+        loading="lazy"
+        allowfullscreen>
+      </iframe>
+    </div>
+    <div class="nav-bar">
+      <div class="nav-item" onclick="goTo('s-courier-home')"><span class="material-icons-outlined nav-icon">home</span><span>Inicio</span></div>
+      <div class="nav-item" onclick="goTo('s-courier-deliveries')"><span class="material-icons-outlined nav-icon">receipt_long</span><span>Mis entregas</span></div>
+      <div class="nav-item active"><span class="material-icons-outlined nav-icon">map</span><span>Mapa</span></div>
+      <div class="nav-item" onclick="openCooperative()"><span class="material-icons-outlined nav-icon">person</span><span>Perfil</span></div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       SCREEN 13 – COOPERATIVE
        ══════════════════════════════ -->
   <div class="screen" id="s-cooperative" style="background:#fff;">
     <div class="coop-header">

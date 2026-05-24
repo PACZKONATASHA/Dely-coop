@@ -267,15 +267,14 @@ async function loadCourierHome() {
       const o = available_orders[0];
       newOrderCard.querySelector('.new-order-name').textContent = o.commerce_name || 'Comercio';
       newOrderCard.querySelector('.new-order-addr').textContent = o.commerce_address || '';
-      newOrderCard.querySelector('.pill:last-child').textContent = `💰 $${o.price}`;
+      newOrderCard.querySelector('.pill:last-child').textContent = `$${o.price}`;
       newOrderCard.dataset.orderId = o.id;
       newOrderCard.style.display = '';
-    } else {
-      newOrderCard.style.display = 'none';
     }
+    // si no hay pedidos de la API se mantiene el card demo visible
 
     const deliveries = await api('GET', '/orders/my-deliveries');
-    const recentSection = document.querySelector('#s-courier-home .section-header.mt-14');
+    const recentSection = document.getElementById('recent-deliveries-header');
     if (recentSection) {
       let sibling = recentSection.nextElementSibling;
       while (sibling && !sibling.classList.contains('nav-bar')) {
