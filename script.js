@@ -51,6 +51,10 @@ function selectRole(role) {
   userRole = role;
   document.getElementById('r-commerce').classList.toggle('active', role === 'commerce');
   document.getElementById('r-courier').classList.toggle('active',  role === 'courier');
+  const emailInput = document.querySelector('#s-login input[type=email]');
+  if (emailInput) {
+    emailInput.value = role === 'courier' ? 'martin@courier.com' : 'panaderia@sol.com';
+  }
 }
 
 async function doLogin() {
