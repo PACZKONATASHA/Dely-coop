@@ -51,15 +51,20 @@ function selectRole(role) {
   userRole = role;
   document.getElementById('r-commerce').classList.toggle('active', role === 'commerce');
   document.getElementById('r-courier').classList.toggle('active',  role === 'courier');
-  const emailInput = document.querySelector('#s-login input[type=email]');
+  const emailInput = document.getElementById('login-email');
   if (emailInput) {
     emailInput.value = role === 'courier' ? 'martin@courier.com' : 'panaderia@sol.com';
   }
 }
 
+const DEMO_USERS = {
+  'panaderia@sol.com': { password: '123456', role: 'commerce', name: 'Panadería Sol', id: 1, email: 'panaderia@sol.com' },
+  'martin@courier.com': { password: '123456', role: 'courier',  name: 'Martín López',  id: 2, email: 'martin@courier.com' },
+};
+
 async function doLogin() {
-  const email    = document.querySelector('#s-login input[type=email]').value.trim();
-  const password = document.querySelector('#s-login input[type=password]').value;
+  const email    = document.getElementById('login-email').value.trim();
+  const password = document.getElementById('login-password').value;
   if (!email || !password) { showToast('Completá todos los campos'); return; }
   try {
     const data = await api('POST', '/auth/login', { email, password, role: userRole });
@@ -67,14 +72,21 @@ async function doLogin() {
     setUser(data.user);
     userRole = data.user.role;
     history = [];
-    if (data.user.role === 'commerce') {
-      loadCommerceHome();
-      goTo('s-commerce-home');
+    if (data.user.role === 'commerce') { loadCommerceHome(); goTo('s-commerce-home'); }
+    else                               { loadCourierHome();  goTo('s-courier-home'); }
+  } catch (e) {
+    // fallback demo: si el servidor no está disponible, verificar credenciales localmente
+    const demo = DEMO_USERS[email.toLowerCase()];
+    if (demo && demo.password === password) {
+      setUser(demo);
+      userRole = demo.role;
+      history = [];
+      if (demo.role === 'commerce') { goTo('s-commerce-home'); }
+      else                          { goTo('s-courier-home'); }
     } else {
-      loadCourierHome();
-      goTo('s-courier-home');
+      showToast('❌ Credenciales incorrectas');
     }
-  } catch (e) { showToast('❌ ' + e.message); }
+  }
 }
 
 async function doRegister() {
