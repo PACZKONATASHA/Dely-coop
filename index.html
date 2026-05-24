@@ -347,48 +347,72 @@
   <!-- ══════════════════════════════
        SCREEN 9 – COURIER HOME
        ══════════════════════════════ -->
-  <div class="screen" id="s-courier-home" style="background:var(--gray-bg);">
-    <div class="courier-top">
-      <div class="status-bar dark" style="padding:0; margin-bottom:6px;"><span>9:41</span><span>▲▲▲ 🔋</span></div>
-      <div class="courier-top-row">
-        <div>
-          <div class="greeting">Hola, Martín 👋</div>
-          <div class="greeting-sub" style="color:rgba(255,255,255,0.8);">Socio repartidor</div>
-        </div>
-        <div class="toggle-wrap">
-          <div class="toggle on" id="avail-toggle" onclick="toggleAvailability()"></div>
-          <span class="toggle-label" id="avail-label">Disponible</span>
-        </div>
-      </div>
-      <div class="balance-section">
-        <div class="balance-lbl">Tu balance</div>
-        <div class="balance-amt">$12.450</div>
-        <span class="balance-link">Ver detalle ›</span>
-      </div>
-    </div>
+  <div class="screen" id="s-courier-home" style="background:#f5f5f5;">
+    <div class="status-bar light"><span>9:41</span><span>▲▲▲ 🔋</span></div>
 
     <div class="scroll-content pb-20">
-      <div class="stats-row">
-        <div class="stat-card"><div class="stat-val">5</div><div class="stat-label">Hoy<br>entregas</div></div>
-        <div class="stat-card"><div class="stat-val">28</div><div class="stat-label">Esta semana<br>entregas</div></div>
-        <div class="stat-card"><div class="stat-val">4.9⭐</div><div class="stat-label">Calificación<br>promedio</div></div>
+
+      <!-- Greeting -->
+      <div style="background:#fff; padding:12px 20px 16px;">
+        <div class="greeting">Hola, Martín 👋</div>
+        <div style="font-size:13px; font-weight:700; color:var(--green); margin-top:2px;">Socio repartidor</div>
       </div>
 
-      <div class="section-header">
+      <!-- Availability card -->
+      <div style="margin:10px 15px 0; background:#fff; border-radius:16px; padding:16px 18px; display:flex; align-items:center; justify-content:space-between; box-shadow:0 1px 6px rgba(0,0,0,0.06);">
+        <div>
+          <div id="avail-label" style="font-size:15px; font-weight:800; color:var(--text);">Estás disponible</div>
+          <div style="font-size:12px; color:var(--gray); margin-top:3px;">Recibí pedidos en tu zona.</div>
+        </div>
+        <div class="toggle on" id="avail-toggle" onclick="toggleAvailability()"></div>
+      </div>
+
+      <!-- Balance card -->
+      <div style="margin:10px 15px 0; background:#fff; border-radius:16px; padding:16px 18px; box-shadow:0 1px 6px rgba(0,0,0,0.06);">
+        <div style="font-size:13px; color:var(--gray);">Tu balance</div>
+        <div style="display:flex; align-items:baseline; justify-content:space-between; margin-top:4px;">
+          <div class="balance-amt" style="font-size:30px; font-weight:800; color:var(--text);">$12.450</div>
+          <span style="color:var(--green); font-weight:700; font-size:13px; cursor:pointer;">Ver detalle ›</span>
+        </div>
+      </div>
+
+      <!-- Stats card -->
+      <div style="margin:10px 15px 0; background:#fff; border-radius:16px; padding:14px 0; box-shadow:0 1px 6px rgba(0,0,0,0.06); display:flex;">
+        <div style="flex:1; text-align:center; padding:0 8px;">
+          <div style="font-size:10px; color:var(--gray-light); font-weight:700; text-transform:uppercase; letter-spacing:0.5px;">Hoy</div>
+          <div style="display:flex; align-items:baseline; justify-content:center; gap:3px; margin-top:4px;">
+            <span class="stat-val" style="font-size:16px; font-weight:800; color:var(--green);">5</span>
+            <span style="font-size:11px; color:var(--gray); font-weight:600;">entregas</span>
+          </div>
+        </div>
+        <div style="flex:1; text-align:center; padding:0 8px; border-left:1px solid var(--border); border-right:1px solid var(--border);">
+          <div style="font-size:10px; color:var(--gray-light); font-weight:700; text-transform:uppercase; letter-spacing:0.5px;">Esta semana</div>
+          <div style="display:flex; align-items:baseline; justify-content:center; gap:3px; margin-top:4px;">
+            <span class="stat-val" style="font-size:16px; font-weight:800; color:var(--text);">28</span>
+            <span style="font-size:11px; color:var(--gray); font-weight:600;">entregas</span>
+          </div>
+        </div>
+        <div style="flex:1; text-align:center; padding:0 8px;">
+          <div style="font-size:10px; color:var(--gray-light); font-weight:700; text-transform:uppercase; letter-spacing:0.5px;">Calificación</div>
+          <div style="margin-top:4px;">
+            <span class="stat-val" style="font-size:16px; font-weight:800; color:var(--text);">4.9⭐</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- New order -->
+      <div class="section-header mt-14">
         <span class="section-title">Nuevo pedido disponible</span>
       </div>
 
       <div class="new-order-card">
-        <div class="new-order-badge">📍 Cerca de vos</div>
         <div class="new-order-name">Super Pan</div>
-        <div class="new-order-addr">Calle Belgrano 459</div>
-        <div class="new-order-pills">
-          <span class="pill">📏 2.1 km</span>
-          <span class="pill">💰 $450</span>
-        </div>
-        <button class="btn-accept" onclick="goTo('s-active-delivery')">Aceptar pedido</button>
+        <div class="new-order-addr">Calle Belgrano 456</div>
+        <div style="font-size:13px; color:var(--gray); margin-top:8px;"><span class="pill">2.1 km</span>  •  <span class="pill">$450</span></div>
+        <button class="btn-accept">Aceptar pedido</button>
       </div>
 
+      <!-- Recent deliveries -->
       <div class="section-header mt-14">
         <span class="section-title">Mis entregas recientes</span>
       </div>
@@ -402,6 +426,7 @@
         <div class="order-info"><div class="order-num">Pedido #1024</div><div class="order-sub">Entregado</div></div>
         <div class="order-meta"><div class="order-time">Hoy, 09:15</div><div class="order-cost">$450</div></div>
       </div>
+
     </div>
 
     <div class="nav-bar">
@@ -415,39 +440,48 @@
   <!-- ══════════════════════════════
        SCREEN 10 – ACTIVE DELIVERY
        ══════════════════════════════ -->
-  <div class="screen" id="s-active-delivery" style="background:var(--gray-bg);">
+  <div class="screen" id="s-active-delivery" style="background:#f5f5f5;">
     <div class="delivery-header">
       <div class="status-bar dark" style="position:absolute; top:0; left:0; right:0; padding:0 20px;"><span>9:41</span><span>▲▲▲ 🔋</span></div>
-      <span style="font-size:22px; cursor:pointer; margin-top:44px;" onclick="goTo('s-courier-home')">←</span>
+      <span style="font-size:22px; cursor:pointer; margin-top:44px; color:#fff;" onclick="goTo('s-courier-home')">←</span>
       <span class="delivery-header-title" style="margin-top:44px;">Entrega activa</span>
     </div>
 
     <div class="scroll-content pb-20">
-      <div class="delivery-step-card ds-pickup">
-        <div class="ds-header">
-          <div class="ds-step-icon pickup">📍</div>
-          <div><div class="ds-label">Retirá el pedido en</div></div>
-          <a href="https://maps.app.goo.gl/YRcqVzYKHcK1tu947" target="_blank" class="map-btn-sm" style="text-decoration:none;">Ver mapa</a>
+
+      <!-- Pickup card -->
+      <div class="ds-pickup" style="background:#fff; margin:12px 15px 0; border-radius:16px; padding:18px; box-shadow:0 1px 6px rgba(0,0,0,0.06);">
+        <div class="ds-label" style="margin-bottom:12px;">Retirá el pedido en:</div>
+        <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:12px;">
+          <div>
+            <div class="ds-name">Super Pan</div>
+            <div class="ds-addr">Calle Belgrano 456</div>
+          </div>
+          <a href="https://maps.app.goo.gl/YRcqVzYKHcK1tu947" target="_blank" class="map-btn-sm" style="text-decoration:none; flex-shrink:0; line-height:1.6;">Ver mapa</a>
         </div>
-        <div class="ds-name">Super Pan</div>
-        <div class="ds-addr">Calle Belgrano 456</div>
+        <span class="ds-step-icon pickup" style="display:none;"></span>
       </div>
 
-      <div class="delivery-step-card ds-dropoff mt-8">
-        <div class="ds-header">
-          <div class="ds-step-icon dropoff">📦</div>
-          <div><div class="ds-label">Entregá en</div></div>
-          <a href="https://maps.app.goo.gl/YRcqVzYKHcK1tu947" target="_blank" class="map-btn-sm" style="text-decoration:none;">Ver mapa</a>
+      <!-- Dropoff card -->
+      <div class="ds-dropoff" style="background:#fff; margin:10px 15px 0; border-radius:16px; padding:18px; box-shadow:0 1px 6px rgba(0,0,0,0.06);">
+        <div class="ds-label" style="margin-bottom:12px;">Entregá en:</div>
+        <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:12px;">
+          <div>
+            <div class="ds-name">Calle Falsa 123, Itu</div>
+            <div class="ds-addr" style="margin-top:4px;">Referencia: Casa azul, portón negro</div>
+          </div>
+          <a href="https://maps.app.goo.gl/YRcqVzYKHcK1tu947" target="_blank" class="map-btn-sm" style="text-decoration:none; flex-shrink:0; line-height:1.6;">Ver mapa</a>
         </div>
-        <div class="ds-name">Calle Falsa 123, Itu</div>
       </div>
 
-      <div class="delivery-step-card" style="background:#fff; border:1.5px solid var(--border); margin-top:8px;">
-        <div style="font-size:11px; font-weight:700; color:var(--gray-light); text-transform:uppercase; letter-spacing:0.7px; margin-bottom:12px;">Detalles del pedido</div>
+      <!-- Details -->
+      <div style="background:#fff; margin:10px 15px 0; border-radius:16px; padding:18px; box-shadow:0 1px 6px rgba(0,0,0,0.06);">
+        <div class="ds-label" style="margin-bottom:12px;">Detalles del pedido</div>
         <div class="detail-row"><span class="detail-icon">🏷️</span><span>Pedido #1026</span></div>
         <div class="detail-row"><span class="detail-icon">📏</span><span>Mediano</span></div>
         <div class="detail-row"><span class="detail-icon">🔔</span><span>Tocar timbre</span></div>
       </div>
+
     </div>
 
     <div style="padding:16px 20px; border-top:1px solid var(--border); background:#fff;">
