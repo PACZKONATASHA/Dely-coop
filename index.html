@@ -119,8 +119,23 @@
   <div class="screen" id="s-commerce-home">
     <div class="top-bar">
       <div class="status-bar dark" style="padding:0; margin-bottom:6px;"><span>9:41</span><span>▲▲▲ 🔋</span></div>
-      <div class="greeting">Hola, Super Pan </
+      <div class="greeting">Hola, Panadería Sol 👋</div>
+      <div class="greeting-sub">Comercio asociado</div>
+    </div>
 
+    <div class="scroll-content pb-20">
+
+      <!-- Hero card Nuevo envío -->
+      <div class="new-delivery-card">
+        <div style="flex:1;">
+          <div class="nd-text">Nuevo envío</div>
+          <div class="nd-sub">Solicitá un repartidor para entregar un pedido.</div>
+          <button class="nd-btn" onclick="goTo('s-request')" style="margin-top:14px;">Solicitar envío</button>
+        </div>
+        <span class="material-icons-outlined" style="font-size:64px; color:#C8E6C9; margin-left:10px; flex-shrink:0;">shopping_bag</span>
+      </div>
+
+      <!-- Mis envíos -->
       <div class="section-header mt-14">
         <span class="section-title">Mis envíos</span>
         <span class="see-all" onclick="goTo('s-orders')">Ver todos</span>
@@ -143,6 +158,7 @@
         <div class="order-info"><div class="order-num">Pedido #1023</div><div class="order-sub">Cancelado</div></div>
         <div class="order-meta"><div class="order-time">Ayer, 16:30</div><div class="order-cost red">$450</div></div>
       </div>
+
     </div>
 
     <div class="nav-bar">
