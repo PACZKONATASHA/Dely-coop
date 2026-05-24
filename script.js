@@ -90,10 +90,10 @@ async function doLogin() {
 }
 
 async function doRegister() {
-  const name     = document.querySelector('#s-register .form-input[placeholder*="Nombre"]').value.trim();
-  const email    = document.querySelector('#s-register input[type=email]').value.trim();
-  const phone    = document.querySelector('#s-register input[type=tel]').value.trim();
-  const password = document.querySelector('#s-register input[type=password]').value;
+  const name     = document.getElementById('register-name').value.trim();
+  const email    = document.getElementById('register-email').value.trim();
+  const phone    = document.getElementById('register-phone').value.trim();
+  const password = document.getElementById('register-password').value;
   const roleBtn  = document.querySelector('#s-register .role-btn.active');
   const role     = roleBtn?.textContent.includes('Repartidor') ? 'courier' : 'commerce';
   if (!name || !email || !password) { showToast('Completá todos los campos'); return; }
@@ -461,8 +461,6 @@ function showToast(msg) {
 /* ── INIT ── */
 document.addEventListener('DOMContentLoaded', () => {
   setupRegisterRoles();
-
-  document.querySelector('#s-register .btn.btn-primary')?.addEventListener('click', doRegister);
 
   document.getElementById('btn-request-delivery')?.addEventListener('click', doRequestDelivery);
 
