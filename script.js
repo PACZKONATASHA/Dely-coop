@@ -314,13 +314,13 @@ async function toggleAvailability() {
 async function acceptOrder() {
   const card = document.querySelector('.new-order-card');
   const orderId = card?.dataset.orderId;
-  if (!orderId) { goTo('s-active-delivery'); return; }
+  goTo('s-active-delivery');
+  if (!orderId) return;
   try {
     await api('PUT', `/orders/${orderId}/accept`);
     currentDeliveryId = orderId;
     await loadActiveDelivery(orderId);
-    goTo('s-active-delivery');
-  } catch (e) { goTo('s-active-delivery'); }
+  } catch (e) { console.error(e); }
 }
 
 /* ── ACTIVE DELIVERY ── */
