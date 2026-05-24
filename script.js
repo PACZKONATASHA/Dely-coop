@@ -387,6 +387,16 @@ async function advanceDelivery() {
   }
 }
 
+/* ── LOGOUT ── */
+function doLogout() {
+  clearToken();
+  history = [];
+  userRole = 'commerce';
+  currentOrderId = null;
+  currentDeliveryId = null;
+  goTo('s-landing');
+}
+
 /* ── TOAST ── */
 function showToast(msg) {
   const toast = document.createElement('div');
