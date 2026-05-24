@@ -387,6 +387,28 @@ async function advanceDelivery() {
   }
 }
 
+/* ── COOPERATIVE / PERFIL ── */
+function openCooperative() {
+  const role = getUser()?.role || userRole;
+  const nav = document.querySelector('#s-cooperative .nav-bar');
+  if (role === 'commerce') {
+    nav.innerHTML = `
+      <div class="nav-item" onclick="goToHome()"><span class="nav-icon">🏠</span><span>Inicio</span></div>
+      <div class="nav-item" onclick="goTo('s-orders')"><span class="nav-icon">📦</span><span>Envíos</span></div>
+      <div class="nav-item"><span class="nav-icon">🏪</span><span>Comercios</span></div>
+      <div class="nav-item active"><span class="nav-icon">👤</span><span>Perfil</span></div>
+    `;
+  } else {
+    nav.innerHTML = `
+      <div class="nav-item" onclick="goToHome()"><span class="nav-icon">🏠</span><span>Inicio</span></div>
+      <div class="nav-item"><span class="nav-icon">📋</span><span>Mis entregas</span></div>
+      <div class="nav-item"><span class="nav-icon">🗺️</span><span>Mapa</span></div>
+      <div class="nav-item active"><span class="nav-icon">👤</span><span>Perfil</span></div>
+    `;
+  }
+  goTo('s-cooperative');
+}
+
 /* ── LOGOUT ── */
 function doLogout() {
   clearToken();
