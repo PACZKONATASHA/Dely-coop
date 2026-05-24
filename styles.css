@@ -102,7 +102,7 @@ body {
   color: var(--gray-light); font-size: 10px; padding: 4px 0;
 }
 .nav-item.active { color: var(--green); }
-.nav-icon { font-size: 22px; line-height: 1; }
+.nav-icon { font-size: 24px; line-height: 1; display: block; }
 .nav-badge-wrap { position: relative; display: inline-block; }
 .nav-badge {
   position: absolute; top: -4px; right: -6px;

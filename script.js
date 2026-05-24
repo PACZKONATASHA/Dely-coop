@@ -402,17 +402,17 @@ function openCooperative() {
   const nav = document.querySelector('#s-cooperative .nav-bar');
   if (role === 'commerce') {
     nav.innerHTML = `
-      <div class="nav-item" onclick="goToHome()"><span class="nav-icon">🏠</span><span>Inicio</span></div>
-      <div class="nav-item" onclick="goTo('s-orders')"><span class="nav-icon">📦</span><span>Envíos</span></div>
-      <div class="nav-item"><span class="nav-icon">🏪</span><span>Comercios</span></div>
-      <div class="nav-item active"><span class="nav-icon">👤</span><span>Perfil</span></div>
+      <div class="nav-item" onclick="goToHome()"><span class="material-icons-outlined nav-icon">home</span><span>Inicio</span></div>
+      <div class="nav-item" onclick="goTo('s-orders')"><span class="material-icons-outlined nav-icon">inventory_2</span><span>Envíos</span></div>
+      <div class="nav-item"><span class="material-icons-outlined nav-icon">storefront</span><span>Comercios</span></div>
+      <div class="nav-item active"><span class="material-icons-outlined nav-icon">person</span><span>Perfil</span></div>
     `;
   } else {
     nav.innerHTML = `
-      <div class="nav-item" onclick="goToHome()"><span class="nav-icon">🏠</span><span>Inicio</span></div>
-      <div class="nav-item"><span class="nav-icon">📋</span><span>Mis entregas</span></div>
-      <div class="nav-item"><span class="nav-icon">🗺️</span><span>Mapa</span></div>
-      <div class="nav-item active"><span class="nav-icon">👤</span><span>Perfil</span></div>
+      <div class="nav-item" onclick="goToHome()"><span class="material-icons-outlined nav-icon">home</span><span>Inicio</span></div>
+      <div class="nav-item"><span class="material-icons-outlined nav-icon">receipt_long</span><span>Mis entregas</span></div>
+      <div class="nav-item"><span class="material-icons-outlined nav-icon">map</span><span>Mapa</span></div>
+      <div class="nav-item active"><span class="material-icons-outlined nav-icon">person</span><span>Perfil</span></div>
     `;
   }
   goTo('s-cooperative');
