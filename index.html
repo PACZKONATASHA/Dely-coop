@@ -21,7 +21,7 @@
       <div style="flex:1; background:linear-gradient(160deg,#1B5E20 0%,#2E7D32 45%,#43A047 100%); display:flex; flex-direction:column;">
         <div class="landing-body" style="padding-top:80px;">
           <div class="landing-logo-ring">
-            <div class="landing-logo-inner">🛵</div>
+            <div class="landing-logo-inner"><span class="material-icons-outlined" style="font-size:42px; color:var(--green);">delivery_dining</span></div>
           </div>
           <div class="landing-title">Dely - Coop</div>
           <div class="landing-sub">Delivery cooperativo<br>Hecho por y para nuestra comunidad</div>
@@ -43,7 +43,7 @@
       <div class="status-bar dark" style="width:100%; margin-bottom:0; padding:0;">
         <span>9:41</span><span>▲▲▲ </span>
       </div>
-      <div class="auth-logo"></div>
+      <div class="auth-logo"><span class="material-icons-outlined">delivery_dining</span></div>
       <div class="auth-name">Dely - Coop</div>
     </div>
     <div class="auth-body">
@@ -52,8 +52,8 @@
 
       <div class="auth-role-label">¿Cómo vas a ingresar?</div>
       <div class="role-row" style="margin-bottom:22px;">
-        <button class="role-btn active" id="r-commerce" onclick="selectRole('commerce')">🏪 Comercio</button>
-        <button class="role-btn"        id="r-courier"  onclick="selectRole('courier')">🛵 Repartidor</button>
+        <button class="role-btn active" id="r-commerce" onclick="selectRole('commerce')"><span class="material-icons-outlined" style="font-size:15px;vertical-align:middle;">storefront</span> Comercio</button>
+        <button class="role-btn"        id="r-courier"  onclick="selectRole('courier')"><span class="material-icons-outlined" style="font-size:15px;vertical-align:middle;">delivery_dining</span> Repartidor</button>
       </div>
 
       <div class="form-group">
@@ -79,7 +79,7 @@
       <div class="status-bar dark" style="width:100%; margin-bottom:0; padding:0;">
         <span>9:41</span><span>▲▲▲ 🔋</span>
       </div>
-      <div class="auth-logo">🛵</div>
+      <div class="auth-logo"><span class="material-icons-outlined">delivery_dining</span></div>
       <div class="auth-name">Dely - Coop</div>
     </div>
     <div class="auth-body">
@@ -87,8 +87,8 @@
       <div class="auth-sub">Creá tu cuenta para comenzar</div>
 
       <div class="role-row" style="margin-bottom:22px;">
-        <button class="role-btn active">🏪 Comercio</button>
-        <button class="role-btn">🛵 Repartidor</button>
+        <button class="role-btn active"><span class="material-icons-outlined" style="font-size:15px;vertical-align:middle;">storefront</span> Comercio</button>
+        <button class="role-btn"><span class="material-icons-outlined" style="font-size:15px;vertical-align:middle;">delivery_dining</span> Repartidor</button>
       </div>
 
       <div class="form-group">
@@ -223,11 +223,11 @@
   <div class="screen" id="s-confirmed" style="background:#fff; align-items:center; justify-content:center;">
     <div class="status-bar light" style="position:absolute; top:0; left:0; right:0;"><span>9:41</span><span>▲▲▲ 🔋</span></div>
     <div class="confirmed-body" style="padding-top:60px;">
-      <div class="confirmed-icon">✅</div>
+      <div class="confirmed-icon"><span class="material-icons-outlined" style="font-size:72px;color:var(--green-btn);">check_circle</span></div>
       <div class="confirmed-title">Tu pedido fue recibido</div>
       <div class="confirmed-sub">Buscando el repartidor socio<br>más cercano...</div>
       <div class="order-badge">Pedido #1026</div>
-      <div class="time-est">⏱ Tiempo estimado de asignación: <strong>1 – 3 minutos</strong></div>
+      <div class="time-est"><span class="material-icons-outlined" style="font-size:14px;vertical-align:middle;">schedule</span> Tiempo estimado de asignación: <strong>1 – 3 minutos</strong></div>
       <button class="btn btn-primary" style="width:220px;" id="btn-ver-estado">Ver estado del pedido</button>
       <button class="btn-text" onclick="goToHome()">Volver al inicio</button>
     </div>
@@ -252,9 +252,9 @@
         <div class="courier-avatar">ML</div>
         <div>
           <div class="courier-name">Martín López</div>
-          <div class="courier-rating">⭐ 4.9</div>
+          <div class="courier-rating"><span class="material-icons-outlined" style="font-size:14px;color:#FFA726;vertical-align:middle;">star</span> 4.9</div>
         </div>
-        <a href="https://wa.me/543786417162" target="_blank" class="call-btn">📞</a>
+        <a href="https://wa.me/543786417162" target="_blank" class="call-btn"><span class="material-icons-outlined" style="font-size:20px;">call</span></a>
       </div>
 
       <div style="padding:16px 20px 8px; font-size:11px; font-weight:700; color:var(--gray-light); text-transform:uppercase; letter-spacing:0.7px;">Estado del envío</div>
@@ -284,7 +284,7 @@
     </div>
 
     <div style="padding:16px 20px; border-top:1px solid var(--border);">
-      <a href="https://wa.me/543786417162" target="_blank" class="btn btn-ghost" style="font-size:15px; font-weight:700; text-decoration:none; display:block; text-align:center;">📞 Contactar al repartidor</a>
+      <a href="https://wa.me/543786417162" target="_blank" class="btn btn-ghost" style="font-size:15px; font-weight:700; text-decoration:none; display:flex; align-items:center; justify-content:center; gap:8px;"><span class="material-icons-outlined" style="font-size:20px;">call</span>Contactar al repartidor</a>
     </div>
   </div>
 
@@ -396,7 +396,7 @@
         <div style="flex:1; text-align:center; padding:0 8px;">
           <div style="font-size:10px; color:var(--gray-light); font-weight:700; text-transform:uppercase; letter-spacing:0.5px;">Calificación</div>
           <div style="margin-top:4px;">
-            <span class="stat-val" style="font-size:16px; font-weight:800; color:var(--text);">4.9⭐</span>
+            <span class="stat-val" style="font-size:16px; font-weight:800; color:var(--text);">4.9<span class="material-icons-outlined" style="font-size:13px;color:#FFA726;vertical-align:middle;margin-left:2px;">star</span></span>
           </div>
         </div>
       </div>
@@ -478,9 +478,9 @@
       <!-- Details -->
       <div style="background:#fff; margin:10px 15px 0; border-radius:16px; padding:18px; box-shadow:0 1px 6px rgba(0,0,0,0.06);">
         <div class="ds-label" style="margin-bottom:12px;">Detalles del pedido</div>
-        <div class="detail-row"><span class="detail-icon">🏷️</span><span>Pedido #1026</span></div>
-        <div class="detail-row"><span class="detail-icon">📏</span><span>Mediano</span></div>
-        <div class="detail-row"><span class="detail-icon">🔔</span><span>Tocar timbre</span></div>
+        <div class="detail-row"><span class="material-icons-outlined detail-icon">sell</span><span>Pedido #1026</span></div>
+        <div class="detail-row"><span class="material-icons-outlined detail-icon">straighten</span><span>Mediano</span></div>
+        <div class="detail-row"><span class="material-icons-outlined detail-icon">notifications_none</span><span>Tocar timbre</span></div>
       </div>
 
     </div>
@@ -496,7 +496,7 @@
   <div class="screen" id="s-cooperative" style="background:#fff;">
     <div class="coop-header">
       <div class="status-bar dark" style="width:100%; padding:0; margin-bottom:0;"><span>9:41</span><span>▲▲▲ 🔋</span></div>
-      <div class="coop-logo">🛵</div>
+      <div class="coop-logo"><span class="material-icons-outlined" style="font-size:30px;">delivery_dining</span></div>
       <div class="coop-name">Dely - Coop</div>
       <div class="coop-sub">Cooperativa de trabajo</div>
     </div>
@@ -504,7 +504,7 @@
     <div class="scroll-content">
       <div class="menu-list">
         <div class="menu-item">
-          <div class="menu-icon-box ic-blue">📰</div>
+          <div class="menu-icon-box ic-blue"><span class="material-icons-outlined">article</span></div>
           <div class="menu-text">
             <div class="menu-title">Noticias</div>
             <div class="menu-desc">Enterate de las novedades</div>
@@ -514,7 +514,7 @@
         </div>
 
         <div class="menu-item">
-          <div class="menu-icon-box ic-purple">🗳️</div>
+          <div class="menu-icon-box ic-purple"><span class="material-icons-outlined">how_to_vote</span></div>
           <div class="menu-text">
             <div class="menu-title">Asambleas</div>
             <div class="menu-desc">Participá en las decisiones</div>
@@ -524,7 +524,7 @@
         </div>
 
         <div class="menu-item">
-          <div class="menu-icon-box ic-green">📊</div>
+          <div class="menu-icon-box ic-green"><span class="material-icons-outlined">bar_chart</span></div>
           <div class="menu-text">
             <div class="menu-title">Estadísticas</div>
             <div class="menu-desc">Transparencia y datos</div>
@@ -533,7 +533,7 @@
         </div>
 
         <div class="menu-item">
-          <div class="menu-icon-box ic-orange">📁</div>
+          <div class="menu-icon-box ic-orange"><span class="material-icons-outlined">folder_open</span></div>
           <div class="menu-text">
             <div class="menu-title">Documentos</div>
             <div class="menu-desc">Reglamento y archivos</div>
@@ -542,7 +542,7 @@
         </div>
 
         <div class="menu-item">
-          <div class="menu-icon-box ic-pink">💬</div>
+          <div class="menu-icon-box ic-pink"><span class="material-icons-outlined">chat_bubble_outline</span></div>
           <div class="menu-text">
             <div class="menu-title">Contacto</div>
             <div class="menu-desc">Comunicáte con la cooperativa</div>
@@ -551,7 +551,7 @@
         </div>
 
         <div class="menu-item" onclick="doLogout()" style="margin-top:8px;">
-          <div class="menu-icon-box" style="background:#fdecea;">🚪</div>
+          <div class="menu-icon-box" style="background:#fdecea; color:#D32F2F;"><span class="material-icons-outlined">logout</span></div>
           <div class="menu-text">
             <div class="menu-title" style="color:#D32F2F;">Cerrar sesión</div>
             <div class="menu-desc">Salir de tu cuenta</div>

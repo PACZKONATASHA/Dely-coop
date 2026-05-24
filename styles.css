@@ -373,7 +373,7 @@ body {
   border-radius: 8px; padding: 7px 13px; font-size: 12px; font-weight: 700; cursor: pointer;
 }
 .detail-row  { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text); margin-top: 10px; }
-.detail-icon { font-size: 17px; }
+.detail-icon { font-size: 18px; color: var(--gray); }
 
 /* ── COOPERATIVE ── */
 .coop-header { background: var(--green); padding: 6px 20px 28px; color: #fff; display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
